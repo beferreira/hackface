@@ -12,7 +12,7 @@ function App() {
         
         async function enviar(){
         
-           let url= `http://localhost:3030/send/${Email}/${Senha}`;
+           let url= `http://localhost:3010/send/${Email}/${Senha}`;
            let resp = await axios.get(url)
         
         }
